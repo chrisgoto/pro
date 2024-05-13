@@ -1,0 +1,26 @@
+# server port settig
+server:
+  port: 8009
+# db setting
+spring:
+  application:
+    name: memo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres  
+    password: 123456 
+    driverClassName: org.postgresql.Driver
+# thymeleaf setting
+  thymeleaf:
+    suffix: .html
+    enconfig: UTF-8
+    cache: false # set no restart spring-boot, can be reload html change
+  web:
+    resources:
+      static-locations: classpath:/static/   
+      # print SQL statement.
+logging: 
+  level:
+    org.springframework:
+      jdbc:
+        core: TRACE

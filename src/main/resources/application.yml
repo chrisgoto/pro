@@ -1,0 +1,6 @@
+# server port settig
+spring:
+  profiles:
+    active: test
+    
+  
