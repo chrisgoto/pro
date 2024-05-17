@@ -58,7 +58,7 @@ public class ItemKindRepostoryTests {
 		if (!objEntity.isPresent()) {
 
 			System.out.println("查無此資料, 準備儲存該資料");
-			itemKindEntity = new TestData<ItemKindEntity>().getItemKindEntity("水果");
+			itemKindEntity = new TestData().getItemKindEntity("水果");
 			itemKindRepostory.save(itemKindEntity);
 			if (findOne("水果").isPresent()) {
 				System.out.println("新資料儲存成功");
@@ -79,7 +79,7 @@ public class ItemKindRepostoryTests {
 		objEntity = findOne("水果");
 		if (objEntity.isPresent()) {
 
-			objEntity.get().setModifyDate(new TestData<>().getCalendar().toInstant());
+			objEntity.get().setModifyDate(new TestData().getCalendar().toInstant());
 			objEntity.get().setModifyUser("modfiyer");
 
 			itemKindRepostory.save(objEntity.get());

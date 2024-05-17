@@ -36,17 +36,13 @@ public class MemoListEntity implements Persistable<String> {
 	//非table欄位, 設定為是否要新增資料為判定條件
 	@Transient
 	private Boolean isInsert;
-	
-	@Override
-	public String getId() {
-		// TODO Auto-generated method stub
-		return this.id;
-	}
 
 	@Override
 	public boolean isNew() {
 		// TODO Auto-generated method stub
 		return this.isInsert;
 	}
+	
+
 
 }

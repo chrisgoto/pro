@@ -1,10 +1,7 @@
 package com.aixtw.pro.repostory;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,28 +16,46 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.aixtw.pro.entity.ItemEntity;
 import com.aixtw.pro.entity.ItemKindEntity;
 import com.aixtw.pro.entity.MemoListEntity;
+import com.aixtw.pro.entity.PayTypeEntity;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
 public class ItemRepostoryTest {
 
 	@Autowired
+	ItemKindRepostory<ItemKindEntity> itemKindRepostory;
+
+	@Autowired
+	PayTypeRepostory<PayTypeEntity> payTypeRepostory;
+
+	@Autowired
 	MemoListRepostory<MemoListEntity> memoListRepostory;
 
 	@Autowired
-	ItemKindRepostory<ItemEntity> itemKindRepostory;
+	ItemRepostory<ItemEntity> itemRepostory;
 
 	MemoListEntity memoListEntity;
 
 	ItemEntity itemEntity;
 
-	Optional<MemoListEntity> objEntity;
+	ItemKindEntity itemKindEntity;
+
+	PayTypeEntity payTypeEntity;
+
+	TestData data;
+
+	Iterable<ItemKindEntity> itemKindIterablel;
+
+	Iterable<PayTypeEntity> payTypeIterable;
+
+	Optional<MemoListEntity> memoListOptional;
+
+	Optional<ItemEntity> itemOptional;
 
 	@Test
 	void contextLoads() {
 
-		Calendar calendar = Calendar.getInstance();
-
+//		Calendar calendar = Calendar.getInstance();
 //		System.out.println("~~~~~~~~~~~~~");
 //		System.out.println("year");
 //		System.out.println(calendar.get(Calendar.YEAR));
@@ -50,9 +65,48 @@ public class ItemRepostoryTest {
 //		System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
 	}
 
-	private String testItemId = UUID.randomUUID().toString();
-	private String testMemoListId = UUID.randomUUID().toString();
+	/***
+	 * 回傳 購買物品種類
+	 * 
+	 * @return ItemKindEntity
+	 */
+	ItemKindEntity getItemKindEntity() {
+		itemKindIterablel = itemKindRepostory.findAll();
 
+		Iterator<ItemKindEntity> iterator = itemKindIterablel.iterator();
+
+		while (iterator.hasNext()) {
+			itemKindEntity = iterator.next();
+			if (("水果").equals(itemKindEntity.getKindName())) {
+				break;
+			}
+
+		}
+		return itemKindEntity;
+	}
+
+	/**
+	 * 回傳 付費方式
+	 * 
+	 * @return PayTypeEntity
+	 */
+	PayTypeEntity getPayTypeEntity() {
+
+		payTypeIterable = payTypeRepostory.findAll();
+
+		Iterator<PayTypeEntity> iterator = payTypeIterable.iterator();
+
+		while (iterator.hasNext()) {
+			payTypeEntity = iterator.next();
+
+			if (("現金").equals(payTypeEntity.getTypeName())) {
+				break;
+			}
+
+		}
+
+		return payTypeEntity;
+	}
 
 	@DisplayName("刪除 test")
 	@Test
@@ -65,29 +119,29 @@ public class ItemRepostoryTest {
 	@Test
 	@Order(2)
 	void saveTest() {
-		System.out.println("~~~~~~~~~~~~~");
 
-		objEntity = memoListRepostory.findToDayRecord();
-		//System.out.println(memoListRepostory.findToDayRecord());
-		Calendar c = Calendar.getInstance();
+		memoListOptional = memoListRepostory.findToDayRecord();
 
-//		System.out.println(String.valueOf(c.get(Calendar.YEAR)).equals(objEntity.get().getYear()));
-//		System.out.println(String.valueOf(c.get(Calendar.MONTH) + 1).equals(objEntity.get().getMonth()));
-//		System.out.println(String.valueOf(c.get(Calendar.DAY_OF_MONTH)).equals(objEntity.get().getDay()));
+		payTypeIterable = payTypeRepostory.findAll();
 
-		if (!objEntity.isPresent()) {
-			memoListRepostory.updateIsTodayToFalse();
-			memoListEntity = new MemoListEntity();
-			memoListEntity.setId(testMemoListId);
-			memoListEntity.setYear(String.valueOf(c.get(Calendar.YEAR)));
-			memoListEntity.setMonth(String.valueOf(c.get(Calendar.MONTH) + 1));
-			memoListEntity.setDay(String.valueOf(c.get(Calendar.DAY_OF_MONTH)));
-			memoListEntity.setIsToday(true);
-			memoListEntity.setCreateUser("root");
-			memoListEntity.setCreateDate(Calendar.getInstance().toInstant());
+		data = new TestData();
+
+		if (!memoListOptional.isPresent()) {
+
+			memoListEntity = data.getMemoListEntity();
 			memoListEntity.setIsInsert(true);
-
 			memoListRepostory.save(memoListEntity);
+
+			itemEntity = data.getItemEntity(memoListEntity.getId(), getItemKindEntity(), getPayTypeEntity());
+			itemEntity.setIsInsert(true);
+			itemRepostory.save(itemEntity);
+			// itemRepostory.save(new TestData().getItemEntity(recordId));
+		} else {
+
+			itemEntity = data.getItemEntity(memoListOptional.get().getId(), getItemKindEntity(), getPayTypeEntity());
+			itemEntity.setIsInsert(true);
+			itemRepostory.save(itemEntity);
+			
 		}
 
 	}

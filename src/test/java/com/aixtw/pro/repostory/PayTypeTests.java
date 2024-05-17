@@ -1,7 +1,6 @@
 package com.aixtw.pro.repostory;
 
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
@@ -59,7 +58,7 @@ public class PayTypeTests {
 		if (!objEntity.isPresent()) {
 
 			System.out.println("查無此資料, 準備儲存該資料");
-			payTypeEntity = new TestData<PayTypeEntity>().getPayTypeEntity("現金");
+			payTypeEntity = new TestData().getPayTypeEntity("現金");
 			payTypeRepostory.save(payTypeEntity);
 
 			if (findOne("現金").isPresent()) {
@@ -82,7 +81,7 @@ public class PayTypeTests {
 		objEntity = findOne("現金");
 		if (objEntity.isPresent()) {
 
-			objEntity.get().setModifyDate(new TestData<>().getCalendar().toInstant());
+			objEntity.get().setModifyDate(new TestData().getCalendar().toInstant());
 			objEntity.get().setModifyUser("modfiyer");
 
 			payTypeRepostory.save(objEntity.get());
