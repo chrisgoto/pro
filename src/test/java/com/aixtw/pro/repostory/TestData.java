@@ -5,11 +5,16 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import com.aixtw.pro.entity.ItemEntity;
 import com.aixtw.pro.entity.ItemKindEntity;
 import com.aixtw.pro.entity.MemoListEntity;
 import com.aixtw.pro.entity.PayTypeEntity;
 
+@SpringBootTest
 public class TestData {
 
 	public List dataList() {
@@ -66,15 +71,35 @@ public class TestData {
 
 		MemoListEntity data = new MemoListEntity();
 		data.setId(UUID.randomUUID().toString());
-		data.setYear(String.valueOf(getCalendar().get(Calendar.YEAR)));
-		data.setMonth(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
-		data.setDay(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
+		data.setYearMonth(String.valueOf(getCalendar().get(Calendar.YEAR)));
+		data.setMonthDay(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
+		data.setDayMonth(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
 		data.setIsToday(true);
 		data.setCreateUser("root");
 		data.setCreateDate(Calendar.getInstance().toInstant());
 
 		return data;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Iterable<MemoListEntity> getMemoListEntityList(){
+		MemoListEntity data = new MemoListEntity();
+		data.setId(UUID.randomUUID().toString());
+		data.setYearMonth(String.valueOf(getCalendar().get(Calendar.YEAR)));
+		data.setMonthDay(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
+		data.setDayMonth(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
+		
+		data.setIsToday(true);
+		data.setCreateUser("root");
+		data.setCreateDate(Calendar.getInstance().toInstant());
+		
+		return null;
+	}
+	
+	
 
 	/**
 	 * 

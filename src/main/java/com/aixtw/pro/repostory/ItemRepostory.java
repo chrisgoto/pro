@@ -17,5 +17,8 @@ public interface ItemRepostory<T> extends PagingAndSortingRepository<ItemEntity,
 	 * @return
 	 */
 	Optional<T> findByMemoRecordId(String memoRecordId);
+	
+
+	
 
 }

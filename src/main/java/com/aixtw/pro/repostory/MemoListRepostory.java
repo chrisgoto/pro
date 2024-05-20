@@ -1,5 +1,6 @@
 package com.aixtw.pro.repostory;
 
+import java.time.Instant;
 import java.util.Optional;
 
 import org.springframework.data.jdbc.repository.query.Modifying;
@@ -15,7 +16,7 @@ public interface MemoListRepostory<T> extends PagingAndSortingRepository<MemoLis
 	
 	Optional<T> findByIsTodayTrue();
 	
-	Optional<T> findByIsTodayFalse();
+	Iterable<MemoListEntity> findByCreateDateOrderByCreateDateAsc(Instant createDate);
 	
 	@Modifying
 	@Query("update memo_list set is_today = false where is_today = true")

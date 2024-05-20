@@ -44,6 +44,4 @@ public class ItemEntity implements Persistable<String> {
 		return this.isInsert;
 	}
 
-
-
 }

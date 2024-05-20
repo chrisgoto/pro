@@ -2,7 +2,6 @@ package com.aixtw.pro.entity;
 
 import java.time.Instant;
 
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -18,9 +17,9 @@ public class MemoListEntity implements Persistable<String> {
 
 	@Id
 	private String id;
-	private String year;
-	private String month;
-	private String day;
+	private String yearMonth;
+	private String monthDay;
+	private String dayMonth;
 	private Boolean isToday;
 	private Boolean isOld = false;
 
@@ -33,7 +32,7 @@ public class MemoListEntity implements Persistable<String> {
 	// @LastModifiedBy
 	private String modifyUser;
 
-	//非table欄位, 設定為是否要新增資料為判定條件
+	// 非table欄位, 設定為是否要新增資料為判定條件
 	@Transient
 	private Boolean isInsert;
 
@@ -42,7 +41,5 @@ public class MemoListEntity implements Persistable<String> {
 		// TODO Auto-generated method stub
 		return this.isInsert;
 	}
-	
-
 
 }

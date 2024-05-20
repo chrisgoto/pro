@@ -1,5 +1,6 @@
 package com.aixtw.pro.repostory;
 
+import java.util.Calendar;
 import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
@@ -26,6 +27,7 @@ public class ItemKindRepostoryTests {
 	@Test
 	void contextLoads() {
 
+		
 	}
 
 	Optional<ItemKindEntity> findOne(String kindName) {
