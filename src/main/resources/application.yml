@@ -1,9 +1,19 @@
 # server port settig
 spring:
   profiles:
-    active: test
-    
-    
-    
+    active: test  
+# thymeleaf setting
+  thymeleaf:
+    suffix: .html
+    enconfig: UTF-8
+    cache: false # set no restart spring-boot, can be reload html change
+  web:
+    resources:
+      static-locations: classpath:/static/     
+ 
+itemkind:
+  parameter:
+    listtitle: 1234
+       
     
   

@@ -6,7 +6,11 @@ public interface MemoListService {
 
 	
 	
-	
-	Iterable<MemoListEntity> findByMonthOrderByCreateDateAsc();
+	/**
+	 * 依月份查找
+	 * @param month
+	 * @return
+	 */
+	Iterable<MemoListEntity> findByMonthRecordOrderByCreateDateAsc(String month);
 	
 }

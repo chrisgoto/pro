@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="base_head.html::head(title='首頁' )">
+
+</head>
+<body>
+
+	<div class="container mt-3">
+		<h2>Striped Rows</h2>
+		<!-- 設定彈跳試窗按鈕 -->
+		<div class="addbtn">
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#addModal">
+				新增 <i class='fas fa-user-plus'></i>
+			</button>
+		</div>
+		<p></p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>編號</th>
+					<th>物品種類</th>
+					<th>序號</th>
+					<th>功能</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="itemKindEntity : ${datalist}"
+					th:object="${itemKindEntity}">
+					<td></td>
+					<td th:text=*{kindName}></td>
+					<td th:text=*{id}></td>
+					<td>
+						<!-- 設定彈跳試窗按鈕 -->
+						<button type="button" class="btn btn-primary"
+							data-bs-toggle="modal" data-bs-target="#updataModal"
+							th:onclick="modifyData([[${itemKindEntity}]])">
+							修改 <i class='fas fa-edit'></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- 修改模版 -->
+		<form th:action="@{/itemkind/update}" th:method="post"
+			th:object="${ItemKindEntity}">
+			<!-- 彈跳試窗 -->
+
+			<!-- The Modal -->
+			<div class="modal" id="updataModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title" align="center">修改資料</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+
+							<span> <input id="itemkind-id" th:name="id" type="hidden">
+							</span>
+							<div class="form-group">
+								<label>種類:</label> <input type="text" class="form-control"
+									id="kind-name" th:name="kindName">
+							</div>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">儲存</button>
+							<button type="button" class="btn btn-danger"
+								data-bs-dismiss="modal">取消</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<!-- 新增模版 -->
+		<form th:action="@{/itemkind/add}" th:method="post"
+			th:object="${ItemKindEntity}">
+			<!-- 彈跳試窗 -->
+
+			<!-- The Modal -->
+			<div class="modal" id="addModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title" align="center">修改資料</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+
+							<span> <input id="itemkind-id-add" th:name="id"
+								type="hidden">
+							</span>
+							<div class="form-group">
+								<label>種類:</label> <input type="text" class="form-control"
+									id="itemkind-kind-name-add" th:name="kindName">
+							</div>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">儲存</button>
+							<button type="button" class="btn btn-danger"
+								data-bs-dismiss="modal">取消</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+
+
+	<footer th:replace="extends_footer.html::body"></footer>
+	<script src="/js/itemkind.js"></script>
+	<link rel="stylesheet" href="/css/itemkind.css">
+</body>
+</html>

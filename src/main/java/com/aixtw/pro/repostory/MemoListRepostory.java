@@ -16,7 +16,7 @@ public interface MemoListRepostory<T> extends PagingAndSortingRepository<MemoLis
 	
 	Optional<T> findByIsTodayTrue();
 	
-	Iterable<MemoListEntity> findByCreateDateOrderByCreateDateAsc(Instant createDate);
+	Iterable<MemoListEntity> findByMonthRecordOrderByCreateDateAsc(String month);
 	
 	@Modifying
 	@Query("update memo_list set is_today = false where is_today = true")

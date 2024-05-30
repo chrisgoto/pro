@@ -1,13 +1,22 @@
 package com.aixtw.pro.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.aixtw.pro.entity.MemoListEntity;
+import com.aixtw.pro.repostory.MemoListRepostory;
 
 public class MemoListServiceImpl implements MemoListService {
 
+	@Autowired
+	MemoListRepostory<MemoListEntity> memoListRepostory;
+	
+	
 	@Override
-	public Iterable<MemoListEntity> findByMonthOrderByCreateDateAsc() {
+	public Iterable<MemoListEntity> findByMonthRecordOrderByCreateDateAsc(String month) {
 		// TODO Auto-generated method stub
-		return null;
+		return memoListRepostory.findByMonthRecordOrderByCreateDateAsc(month);
 	}
+
+
 
 }

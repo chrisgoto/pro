@@ -71,9 +71,9 @@ public class TestData {
 
 		MemoListEntity data = new MemoListEntity();
 		data.setId(UUID.randomUUID().toString());
-		data.setYearMonth(String.valueOf(getCalendar().get(Calendar.YEAR)));
-		data.setMonthDay(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
-		data.setDayMonth(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
+		data.setYearRecord(String.valueOf(getCalendar().get(Calendar.YEAR)));
+		data.setMonthRecord(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
+		data.setDayRecord(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
 		data.setIsToday(true);
 		data.setCreateUser("root");
 		data.setCreateDate(Calendar.getInstance().toInstant());
@@ -88,9 +88,9 @@ public class TestData {
 	public Iterable<MemoListEntity> getMemoListEntityList(){
 		MemoListEntity data = new MemoListEntity();
 		data.setId(UUID.randomUUID().toString());
-		data.setYearMonth(String.valueOf(getCalendar().get(Calendar.YEAR)));
-		data.setMonthDay(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
-		data.setDayMonth(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
+		data.setYearRecord(String.valueOf(getCalendar().get(Calendar.YEAR)));
+		data.setMonthRecord(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
+		data.setDayRecord(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
 		
 		data.setIsToday(true);
 		data.setCreateUser("root");

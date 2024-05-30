@@ -17,9 +17,9 @@ public class MemoListEntity implements Persistable<String> {
 
 	@Id
 	private String id;
-	private String yearMonth;
-	private String monthDay;
-	private String dayMonth;
+	private String yearRecord;
+	private String monthRecord;
+	private String dayRecord;
 	private Boolean isToday;
 	private Boolean isOld = false;
 

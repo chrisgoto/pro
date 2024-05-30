@@ -10,15 +10,8 @@ spring:
     username: postgres  
     password: 123456 
     driverClassName: org.postgresql.Driver
-# thymeleaf setting
-  thymeleaf:
-    suffix: .html
-    enconfig: UTF-8
-    cache: false # set no restart spring-boot, can be reload html change
-  web:
-    resources:
-      static-locations: classpath:/static/   
-      # print SQL statement.
+  
+# print SQL statement.
 logging: 
   level:
     org.springframework:
