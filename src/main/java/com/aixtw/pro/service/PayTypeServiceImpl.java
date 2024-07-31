@@ -1,5 +1,7 @@
 package com.aixtw.pro.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,12 @@ public class PayTypeServiceImpl implements PayTypeService {
 		payTypeRepostory.delete(entity);
 		
 		return existsById(id);
+	}
+
+	@Override
+	public Optional<PayTypeEntity> findOneById(int id) {
+		// TODO Auto-generated method stub
+		return payTypeRepostory.findById(id);
 	}
 
 }

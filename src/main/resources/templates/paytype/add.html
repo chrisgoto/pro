@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>add page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div>
+
+		<!-- 新增模版 -->
+		<form th:action="@{${action}}" th:method="${method}"
+			th:object="${obj}">
+			<!-- 彈跳試窗 -->
+
+			<!-- The Modal -->
+			<div class="modal" th:id="${id}">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title" align="center">新增資料</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<!--  
+							<span> <input id="itemkind-id-add" th:name="id"
+								type="hidden">
+							</span>
+							-->
+							<div class="form-group">
+								<label>名稱:</label> <input type="text" class="form-control"
+									id="paytype-name-add" th:name="typeName">
+								<label>類別:</label> <input type="text" class="form-control"
+									id="type-add" th:name="type">
+							</div>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">儲存</button>
+							<button type="button" class="btn btn-danger"
+								data-bs-dismiss="modal">取消</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+</body>
+</html>

@@ -1,6 +1,5 @@
 package com.aixtw.pro.repostory;
 
-
 import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
@@ -89,6 +88,24 @@ public class PayTypeTests {
 
 		} else {
 			System.out.println("查無此資料, 無法更新");
+		}
+
+	}
+
+	@DisplayName("查詢 test")
+	@Test
+	@Order(4)
+	void findOneById() {
+		objEntity = findOne("現金");
+
+		if (objEntity.isPresent()) {
+
+			System.out.println(payTypeRepostory.findById(objEntity.get().getId()));
+
+			System.out.println("資料查詢成功");
+
+		} else {
+			System.out.println("資料查詢失敗");
 		}
 
 	}

@@ -1,5 +1,7 @@
 package com.aixtw.pro.controller;
 
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +30,6 @@ public class ItemKindController {
 
 		Iterable<ItemKindEntity> it = itemKindService.finall();
 
-		System.out.println(it.iterator());
-
 		model.addAttribute("datalist", it.iterator());
 
 		return ItemKindUrl.ROOT + "/" + ItemKindUrl.LIST;
@@ -44,15 +44,25 @@ public class ItemKindController {
 	@PostMapping(ItemKindUrl.ROOT + "/" + ItemKindUrl.UPD)
 	public String upd(Model model, @ModelAttribute ItemKindEntity entity) {
 
+		Optional<ItemKindEntity> op = itemKindService.findById(entity.getId());
+
 		try {
-			itemKindService.save(entity);
+
+			if (op.isPresent()) {
+				ItemKindEntity saveEntity = op.get();
+				saveEntity.setKindName(entity.getKindName());
+				itemKindService.save(saveEntity);
+			} else {
+				itemKindService.save(entity);
+			}
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			logger.info("error -> html page: itemkind/list , method: upd");
 			logger.info(e.getMessage());
 		}
 
-		return ItemKindUrl.REDIRECT + ItemKindUrl.LIST;
+		return ItemKindUrl.REDIRECT + "/" + ItemKindUrl.ROOT + "/" + ItemKindUrl.LIST;
 	}
 
 }

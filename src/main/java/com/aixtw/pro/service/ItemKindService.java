@@ -1,5 +1,7 @@
 package com.aixtw.pro.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.aixtw.pro.entity.ItemKindEntity;
@@ -36,5 +38,12 @@ public interface ItemKindService {
 	 * @return
 	 */
 	boolean delete(ItemKindEntity entity);
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Optional<ItemKindEntity> findById(int id);
 
 }

@@ -1,5 +1,7 @@
 package com.aixtw.pro.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,12 @@ public class ItemKindServiceImpl implements ItemKindService {
 		itemKindRepostory.delete(entity);
 		
 		return existsById(id);
+	}
+
+	@Override
+	public Optional<ItemKindEntity> findById(int id) {
+		// TODO Auto-generated method stub
+		return itemKindRepostory.findById(id);
 	}
 
 }

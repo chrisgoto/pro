@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head></head>
 <!-- html base footer setting -->
 <!-- 頁尾的 BS, aw, js, css 等一些框架或提供其他頁面的繼承 -->
 <body th:fragment="block">
 	
 	
 	
-	<div th:insert="base_footer.html::div"></div>
-	<footer>
-		 <a>11111111111111</a>
-		
-	</footer>
+	<div th:replace="base_footer.html::div"></div>
+
 </body>
 
 </html>

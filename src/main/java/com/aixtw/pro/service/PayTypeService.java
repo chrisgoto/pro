@@ -1,5 +1,7 @@
 package com.aixtw.pro.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.aixtw.pro.entity.PayTypeEntity;
@@ -37,5 +39,12 @@ public interface PayTypeService {
 	 * @return
 	 */
 	boolean delete(PayTypeEntity entity);
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Optional<PayTypeEntity> findOneById(int id);
 
 }
