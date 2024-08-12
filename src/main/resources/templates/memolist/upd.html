@@ -9,6 +9,7 @@
 <body>
 
 	<div>
+		
 		<!-- 修改模版 -->
 		<form th:action="@{${action}}" th:method="${method}"
 			th:object="${obj}">
@@ -28,14 +29,11 @@
 						<!-- Modal body -->
 						<div class="modal-body">
 
-							<span> <input id="paytype-id" th:name="id" type="hidden">
+							<span> <input id="itemkind-id" th:name="id" type="hidden">
 							</span>
 							<div class="form-group">
-								<label>名稱:</label> <input type="text" class="form-control"
-									id="type-name" th:name="typeName"> 
-								<label>種類:</label>
-								<input type="text" class="form-control" id="type"
-									th:name="type">
+								<label>種類:</label> <input type="text" class="form-control"
+									id="kind-name" th:name="kindName">
 							</div>
 						</div>
 

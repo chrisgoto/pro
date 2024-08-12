@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base_head.html::head(title='首頁' )">
+<meta charset="utf-8">
+</head>
+
+<body>
+
+	<div class="container mt-3">
+		<h2>Striped Rows</h2>
+		<!-- 設定彈出視窗(add page)  -->
+		<div class="addbtn">
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#addModal">
+				新增 <i class='fas fa-file-alt'></i>
+			</button>
+		</div>
+		<p></p>
+		<ul>
+
+		</ul>
+
+		<ul class="list-group">
+			<li class="list-group-item list-group-item-info">年</li>
+			<li class="list-group" th:each="memoListEntity : ${datalist}"
+				th:object="${memoListEntity}"><a
+				class="list-group-item list-group-item-action list-group-item-success"
+				th:text=*{yearRecord}
+				th:onclick="openDayList([[${memoListEntity}]],[[${'/memolist/daylist'}]])"></a></li>
+		</ul>
+
+
+	</div>
+	<script src="/js/memolist.js"></script>
+
+
+	<footer th:replace="extends_footer.html::div"></footer>
+
+	<link rel="stylesheet" href="/css/base_comm.css">
+</body>
+</html>

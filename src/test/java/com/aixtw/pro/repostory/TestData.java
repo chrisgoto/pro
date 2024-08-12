@@ -80,26 +80,24 @@ public class TestData {
 
 		return data;
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	public Iterable<MemoListEntity> getMemoListEntityList(){
+	public Iterable<MemoListEntity> getMemoListEntityList() {
 		MemoListEntity data = new MemoListEntity();
 		data.setId(UUID.randomUUID().toString());
 		data.setYearRecord(String.valueOf(getCalendar().get(Calendar.YEAR)));
 		data.setMonthRecord(String.valueOf(getCalendar().get(Calendar.MONTH) + 1));
 		data.setDayRecord(String.valueOf(getCalendar().get(Calendar.DAY_OF_MONTH)));
-		
+
 		data.setIsToday(true);
 		data.setCreateUser("root");
 		data.setCreateDate(Calendar.getInstance().toInstant());
-		
+
 		return null;
 	}
-	
-	
 
 	/**
 	 * 
@@ -116,11 +114,9 @@ public class TestData {
 		data.setCreateUser("root");
 		data.setCreateDate(Calendar.getInstance().toInstant());
 		data.setItemKindId(itemKind.getId());
-		data.setItemKindName(itemKind.getKindName());
 		data.setItemName("香焦");
 		data.setItemPay(200);
 		data.setPayTypeId(payType.getId());
-		data.setPayTypeName(payType.getTypeName());
 
 		return data;
 	}

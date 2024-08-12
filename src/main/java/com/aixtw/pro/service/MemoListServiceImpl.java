@@ -9,12 +9,17 @@ public class MemoListServiceImpl implements MemoListService {
 
 	@Autowired
 	MemoListRepostory<MemoListEntity> memoListRepostory;
-	
-	
+
 	@Override
 	public Iterable<MemoListEntity> findByMonthRecordOrderByCreateDateAsc(String month) {
 		// TODO Auto-generated method stub
 		return memoListRepostory.findByMonthRecordOrderByCreateDateAsc(month);
+	}
+
+	@Override
+	public Iterable<MemoListEntity> findAll() {
+		// TODO Auto-generated method stub
+		return memoListRepostory.findAll();
 	}
 
 

@@ -13,4 +13,7 @@ public interface MemoListService {
 	 */
 	Iterable<MemoListEntity> findByMonthRecordOrderByCreateDateAsc(String month);
 	
+	
+	Iterable<MemoListEntity> findAll();
+	
 }

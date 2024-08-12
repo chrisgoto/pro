@@ -18,9 +18,7 @@ public class ItemEntity implements Persistable<String> {
 	@Id
 	private String id;
 	private int itemKindId;
-	private String itemKindName;
 	private int payTypeId;
-	private String payTypeName;
 	private String itemName;
 	private int itemPay;
 	private String memoRecordId;

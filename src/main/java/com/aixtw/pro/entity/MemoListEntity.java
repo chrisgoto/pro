@@ -34,7 +34,7 @@ public class MemoListEntity implements Persistable<String> {
 
 	// 非table欄位, 設定為是否要新增資料為判定條件
 	@Transient
-	private Boolean isInsert;
+	private Boolean isInsert = false;
 
 	@Override
 	public boolean isNew() {

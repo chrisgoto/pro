@@ -20,41 +20,42 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th>年</th>
+					<th>月</th>
+					<th>日</th>
+					<th>是否今日</th>
+					<th>是否為舊檔</th>
 					<th>編號</th>
-					<th>名稱</th>
-					<th>類別</th>
-					<th>功能</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="payTypeEntity : ${datalist}"
-					th:object="${payTypeEntity}">
-					<td></td>
-					<td th:text=*{typeName}></td>
-					<td th:text=*{type}></td>
+				<tr th:each="memoListEntity : ${datalist}"
+					th:object="${memoListEntity}">
+					<td th:text=*{yearRecord}></td>
+					<td th:text=*{monthRecord}></td>
 					<td>
 						<!-- 設定彈出視窗(upd page) -->
 						<button type="button" class="btn btn-primary"
 							data-bs-toggle="modal" data-bs-target="#updModal"
-							th:onclick="modifyData([[${payTypeEntity}]])">
+							th:onclick="modifyData([[${memoListEntity}]])">
 							修改 <i class='fas fa-edit'></i>
 						</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		
+
 		<!-- 修改模版, id value 為修改按鈕中data-bs-target參數的值(不用#號), 請參考booststrap5 modal的設定 -->
-		<script src="/js/paytype.js"></script>
+
 		<form
-			th:replace="/paytype/upd.html::div(action='/paytype/upd',
-		 obj='${payTypeEntity}', method='post',id='updModal')"></form>
+			th:replace="/memolist/upd.html::div(action='/memolist/upd',
+		 obj='${memoListEntity}', method='post',id='updModal')"></form>
 
 
 		<!-- 新增模版, id value 為新增按鈕中data-bs-target參數的值(不用#號), 請參考booststrap5 modal的設定 -->
 		<form
-			th:replace="/paytype/add.html::div(action='/paytype/add',
-		 method='post',id='addModal')"></form>
+			th:replace="/memolist/add.html::div(action='/memolist/add',
+		 	 method='post',id='addModal')"></form>
 
 	</div>
 
